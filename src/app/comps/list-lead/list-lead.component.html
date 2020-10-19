@@ -1,0 +1,41 @@
+    <div class="row mb-5 mx-0 pb-5">
+        <div class="col-10 mx-auto">
+          <h6 class="text-center mb-4">Future customers</h6>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">city</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>  
+              <tr *ngFor="let lead of leads">
+                <td class="p-1">{{lead.id}}</td>
+                <td class="p-1">{{lead.name}}</td>
+                <td class="p-1">{{lead.email}}</td>
+                <td class="p-1">{{lead.phone}}</td>
+                <td class="p-1">{{lead.city}}</td>
+                <td class="p-1"><a class="btn btn-primary" routerLink="/edit/{{lead.id}}">Edit</a></td>
+                <td class="p-1">
+                  <button class="btn btn-danger"
+                          mwlConfirmationPopover
+                          [popoverTitle]="popoverTitle"
+                          [popoverMessage]="popoverMessage"
+                          placement="left"
+                          (confirm)="delete(lead.id)"
+                          (cancel)="cancelClicked = true"
+                  >
+                  Delete
+                  </button>
+                </td>
+              </tr>
+           </tbody>
+          </table>
+        </div>
+    </div>
+

@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4 mx-auto">
+            <h6 class="text-center mb-4">Add Lead</h6>
+            <form #forminputs="ngForm" (submit)="addLead($event)">
+                <div class="form-group">
+                    <label hidden for="name">Name</label>
+                    <input required [(ngModel)]="name" #nameInput="ngModel" type="text" name="name" class="form-control" id="name" placeholder="Name">
+                    <div class="alert alert-danger py-1 pl-2" *ngIf="nameInput.touched && !nameInput.valid">Name is required.</div>
+                </div>
+                <div class="form-group">
+                    <label hidden for="email">Email</label>
+                    <input required [(ngModel)]="email" #emailInput="ngModel" type="email" name="email" class="form-control" id="email"  placeholder="Email">
+                    <div class="alert alert-danger py-1 pl-2" *ngIf="emailInput.touched && !emailInput.valid">Email is required.</div>
+                </div>
+                <div class="form-group">
+                    <label hidden for="phone">Phone</label>
+                    <input required [(ngModel)]="phone" #phoneInput="ngModel" type="text" name="phone" class="form-control" id="phone" placeholder="Phone">
+                    <div class="alert alert-danger py-1 pl-2" *ngIf="phoneInput.touched && !phoneInput.valid">Phone is required.</div>
+                </div>
+                <div class="form-group">
+                    <label hidden for="city">City</label>
+                    <input required [(ngModel)]="city" #cityInput="ngModel" type="text" name="city" class="form-control" id="city" placeholder="City">
+                    <div class="alert alert-danger py-1 pl-2" *ngIf="cityInput.touched && !cityInput.valid">City is required.</div>
+                </div>
+                    <button type="submit" name="submit" class="btn btn-danger form-control"
+                            [disabled]="!forminputs.valid">Add future customer :)
+                    </button>
+            </form>
+        </div>
+    </div>
+</div>

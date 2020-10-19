@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "smarti-task"
+    }
+  },
+  "defaultProject": "smarti-task",
+  "cli": {
+    "analytics": "adf87f07-86a0-4f90-941b-a56a4be9a016"
+  }
 }
