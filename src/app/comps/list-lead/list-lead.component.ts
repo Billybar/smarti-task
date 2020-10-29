@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Lead } from '../../Lead';
 import { LeadService } from '../../service/lead.service';
-import { MessageService } from '../../service/message.service'; 
+import { MessageService } from '../../service/message.service';
+import { ListToEditService } from '../../service/list-to-edit.service' 
 
  
 @Component({
@@ -11,15 +12,16 @@ import { MessageService } from '../../service/message.service';
 })
 export class ListLeadComponent implements OnInit {
 
-  public popoverTitle:string = '--Notice';
-  public popoverMessage:string = 'Do you want to delete?';
-  
+  public popoverTitle: string = '--Notice';
+  public popoverMessage: string = 'Do you want to delete?';
+  public idColor: string = 'red';
 
-  public leads:Lead[] = [];
+  public leads: Lead[] = [];
 
   constructor(
-    private leadservice:LeadService, 
-    private msgService:MessageService 
+    private listToEditService: ListToEditService, 
+    private leadservice: LeadService, 
+    private msgService: MessageService 
     ) { }
 
   ngOnInit(): void {
@@ -48,5 +50,12 @@ export class ListLeadComponent implements OnInit {
     }, error => {
         alert('Try again');
       });
+  }
+
+
+  passLead(lead: any)
+  {
+    console.log(lead+ ' from list.ts');
+    this.listToEditService.sendMessage(lead);
   }
 }

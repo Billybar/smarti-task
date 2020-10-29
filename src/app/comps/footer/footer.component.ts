@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -7,6 +7,15 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
 
+  @Input() passTesting: string
+  @Output() whatever = new EventEmitter();
+
+  public stateData: string;
+  
   constructor() { }
 
+  
+  onClick(data: string){
+    this.whatever.emit(data);
+  }
 }

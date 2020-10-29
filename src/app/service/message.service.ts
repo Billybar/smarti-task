@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 })
 export class MessageService {
 
-  private subject = new Subject();
+  private subject = new Subject<any>();
 
   constructor() { }
 

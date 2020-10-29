@@ -18,20 +18,20 @@ export class LeadService {
     this.headers.append('X-Requested-With','XMLHttpRequest');
   }
 
-  addLead(name:string, email:string, phone:string, city:string):Observable<Lead>
+  addLead(name:string, email:string, phone:string, city:string): Observable<Lead>
   {
     const newLead = new Lead(name, email, phone, city);
     return this.http.post<Lead>(this.server+'add',newLead);
   }
 
 
-  getLeads():Observable<Lead[]>
+  getLeads(): Observable<Lead[]>
   {
     return this.http.get<Lead[]>(this.server+'get');
   }
 
 
-  deleteLead(idNum:any):Observable<Lead>
+  deleteLead(idNum:any): Observable<Lead>
   {
     const delLead = {
       id:idNum
@@ -40,7 +40,7 @@ export class LeadService {
   }
 
 
-  editLead(idNum:any,name:string, email:string, phone:string, city:string):Observable<Lead>
+  editLead(idNum:any,name:string, email:string, phone:string, city:string): Observable<Lead>
   {
     const editLead = new Lead(name, email, phone, city);
     editLead.id = idNum;

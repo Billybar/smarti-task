@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ListToEditService } from 'src/app/service/list-to-edit.service';
 import { Lead } from '../../Lead';
 import { LeadService } from '../../service/lead.service';
 import { MessageService } from '../../service/message.service';
@@ -10,7 +11,7 @@ import { MessageService } from '../../service/message.service';
   templateUrl: './edit-lead.component.html',
   styleUrls: ['./edit-lead.component.css']
 })
-export class EditLeadComponent implements OnInit {
+export class EditLeadComponent implements OnInit{
 
   private id:any;
   public name:string;
@@ -18,22 +19,36 @@ export class EditLeadComponent implements OnInit {
   public phone:string;
   public city:string;
 
+
   constructor(
-    private router : Router, 
+    private listToEditService: ListToEditService,
+    private router: Router, 
     private route: ActivatedRoute, 
     private leadservice: LeadService, 
     private msgService:MessageService
-    ) { }
+    
+    ) { 
+      // this.listToEditService.listToEditAsObservable
+      // .subscribe((leadDetails: any) =>{
+      //   this.name = leadDetails.name;
+      //   this.email = leadDetails.email;
+      //   this.phone = leadDetails.phone;
+      //   this.city = leadDetails.city;
+      // });
+      
+    }
+    
 
   ngOnInit(): void {
     this.route.params.subscribe((data)=>{
       this.id = data.id;
     });
+
   }
 
   editLead(event){
     event.preventDefault()
-    
+
     // check if null
     if(this.name && this.email && this.phone && this.city)
     {

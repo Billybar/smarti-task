@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'smarti-task';
+  public testing = 'test';
+  public title = 'smarti-task';
+
+
+  onWhatEver(data: string){
+    console.log(data);
+  }
 }
