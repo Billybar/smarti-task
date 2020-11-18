@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class LeadService {
 
-  private server:string = 'http://localhost/smarti_task/public/';
+  private server:string = 'http://smartitask.com/public/index.php/';
   private headers:HttpHeaders = new HttpHeaders();
   
   constructor( private http: HttpClient) { 
@@ -18,6 +18,7 @@ export class LeadService {
     this.headers.append('X-Requested-With','XMLHttpRequest');
   }
 
+
   addLead(name:string, email:string, phone:string, city:string): Observable<Lead>
   {
     const newLead = new Lead(name, email, phone, city);
@@ -25,7 +26,7 @@ export class LeadService {
   }
 
 
-  getLeads(): Observable<Lead[]>
+  getLeads()
   {
     return this.http.get<Lead[]>(this.server+'get');
   }
